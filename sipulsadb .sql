@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2020 at 05:59 AM
+-- Generation Time: Jan 23, 2021 at 02:24 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -18,27 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kasir`
+-- Database: `sipulsadb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kategori_produk`
---
-
-CREATE TABLE `kategori_produk` (
-  `id` int(11) NOT NULL,
-  `kategori` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `kategori_produk`
---
-
-INSERT INTO `kategori_produk` (`id`, `kategori`) VALUES
-(1, 'Tekhnologi'),
-(2, 'Kebutuhan');
 
 -- --------------------------------------------------------
 
@@ -60,7 +41,11 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `role`) VALUES
 (1, 'admin', '$2y$10$/I7laWi1mlNFxYSv54EUPOH8MuZhmRWxhE.LaddTK9TSmVe.IHP2C', 'Admin', '1'),
-(2, 'ibrahimalanshor', '$2y$10$5thNuizSyAdrGXC9A/WYd.StNiSRUy0eBZJ401hGBfUpwGINu9kyG', 'Ibrahim Al Anshor', '2');
+(4, 'pegawai', '$2y$10$ZpkZ4P9Jp7RTOicXR9VqkOCdXBi3ajwufsS/xTi8zrGtGzVsVJ036', 'pegawai', '2'),
+(5, 'dimass', '$2y$10$TyM9xdanYA3y8fdgIDmjkeKSCmmW9LmqtBuTte4K04EDOOFsiKdVa', 'dimas', ''),
+(6, 'dimasss', '$2y$10$z2C4mOSepw12Twvycq64W.h6N7MVMsJ6PWS47czXFvrvfdQJvfzl2', 'dimas', ''),
+(12, 'addd', '$2y$10$wT5vojZYkUccq3uh5nsNle1Llrgknoeg0ZHRgeBqspzEy1cgrwPp6', 'admin', ''),
+(13, 'akkk', '$2y$10$YIImilz7zIDXWRLQWnLTLe.R7Bjp1NpOGeBxUZL5zJaMONhjxl/OG', 'aku', '');
 
 -- --------------------------------------------------------
 
@@ -72,8 +57,8 @@ CREATE TABLE `produk` (
   `id` int(11) NOT NULL,
   `barcode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_produk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kategori` int(11) NOT NULL,
-  `satuan` int(11) NOT NULL,
+  `provider` int(11) NOT NULL,
+  `pulsa` int(11) NOT NULL,
   `harga` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stok` int(11) NOT NULL,
   `terjual` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -83,29 +68,71 @@ CREATE TABLE `produk` (
 -- Dumping data for table `produk`
 --
 
-INSERT INTO `produk` (`id`, `barcode`, `nama_produk`, `kategori`, `satuan`, `harga`, `stok`, `terjual`) VALUES
-(1, 'PULS ALPRB', 'Voucher Pulsa 50000', 1, 2, '55000', 2, '1'),
-(2, 'DJRM SPER', 'Djarum Super 12', 2, 1, '18000', 15, '5'),
-(3, 'A', 'A', 1, 1, '15000', 0, '1');
+INSERT INTO `produk` (`id`, `barcode`, `nama_produk`, `provider`, `pulsa`, `harga`, `stok`, `terjual`) VALUES
+(1, 'TELKOMSEL 5k\r\n', 'PULSA TELKOMSEL 5000', 1, 1, '6500', 44, '1'),
+(2, 'TELKOMSEL 10k\r\n', 'PULSA TELKOMSEL 10.000', 1, 2, '12000', 50, ''),
+(3, 'TELKOMSEL 20k\r\n', 'PULSA TELKOMSEL 20.000', 1, 3, '21000', 48, '1'),
+(4, 'TELKOMSEL 50k\r\n', 'PULSA TELKOMSEL 50.000', 1, 4, '51000', 49, '1'),
+(5, 'TELKOMSEL 100k\r\n', 'PULSA TELKOMSEL 100.000', 1, 5, '101000', 48, '2'),
+(6, 'TELKOMSEL 200k\r\n', 'PULSA TELKOMSEL 200.000', 1, 6, '201000', 50, ''),
+(7, 'INDOSAT 5k', 'PULSA INDOSAT 5000', 2, 1, '6500', 50, ''),
+(8, 'INDOSAT 10k', 'PULSA INDOSAT 10000', 2, 2, '11500', 50, ''),
+(9, 'INDOSAT 20k', 'PULSA INDOSAT 20000', 2, 3, '21000', 50, ''),
+(10, 'INDOSAT 50k\r\n', 'PULSA INDOSAT 50000', 2, 4, '51000', 50, ''),
+(11, 'INDOSAT 100k\r\n', 'PULSA INDOSAT 100.000', 2, 5, '101000', 50, ''),
+(12, 'INDOSAT 200k', 'PULSA INDOSAT 200.000', 2, 10, '201000', 50, ''),
+(14, 'AXIS 5K', 'PULSA AXIS 5000', 4, 3, '6500', 50, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `satuan_produk`
+-- Table structure for table `provider_produk`
 --
 
-CREATE TABLE `satuan_produk` (
+CREATE TABLE `provider_produk` (
   `id` int(11) NOT NULL,
-  `satuan` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `provider` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `satuan_produk`
+-- Dumping data for table `provider_produk`
 --
 
-INSERT INTO `satuan_produk` (`id`, `satuan`) VALUES
-(1, 'Bungkus'),
-(2, 'Voucher');
+INSERT INTO `provider_produk` (`id`, `provider`) VALUES
+(1, 'Telkomsel'),
+(2, 'Indosat Oreodo'),
+(3, 'By.u'),
+(4, 'Axis'),
+(5, 'XL Axiata'),
+(6, '3'),
+(7, 'Smartfren'),
+(9, 'byyy'),
+(10, 'bnnn');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pulsa_produk`
+--
+
+CREATE TABLE `pulsa_produk` (
+  `id` int(11) NOT NULL,
+  `pulsa` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pulsa_produk`
+--
+
+INSERT INTO `pulsa_produk` (`id`, `pulsa`) VALUES
+(3, '5000'),
+(4, '10000'),
+(6, '20000'),
+(8, '50000'),
+(9, '100000'),
+(10, '200000'),
+(12, '400000'),
+(13, '100');
 
 -- --------------------------------------------------------
 
@@ -124,7 +151,7 @@ CREATE TABLE `toko` (
 --
 
 INSERT INTO `toko` (`id`, `nama`, `alamat`) VALUES
-(1, 'Toko Tum', 'Jln Raya Klesem Selatan No 1E Wanadadi, Banjarnegara, Indonesia');
+(1, 'SIPULSA', 'Jln. KH Ali Sekarputih Bondowoso');
 
 -- --------------------------------------------------------
 
@@ -157,17 +184,26 @@ INSERT INTO `transaksi` (`id`, `tanggal`, `barcode`, `qty`, `total_bayar`, `juml
 (5, '2020-02-21 13:49:44', '1', '2', '110000', '200000', '10000', 0, '108A992MRZ3PYME', 2),
 (6, '2020-12-28 11:43:56', '3', '1', '15000', '15000', '', 1, 'E6PF940PPZQFZWW', 1),
 (7, '2020-12-28 11:57:14', '1', '1', '55000', '100000', '', NULL, 'JONPA3TLUQE6ZUH', 1),
-(8, '2020-12-28 11:58:56', '1', '1', '55000', '100000', '', NULL, '1QP7MWK3L285NHP', 1);
+(8, '2020-12-28 11:58:56', '1', '1', '55000', '100000', '', NULL, '1QP7MWK3L285NHP', 1),
+(9, '2020-12-28 12:34:17', '2', '1', '18000', '20000', '', NULL, '2L36Y4YLRVHD0XA', 1),
+(10, '2021-01-04 11:18:06', '1', '1', '55000', '150000', '', NULL, 'FTPQIW2RGDKC4TN', 1),
+(11, '2021-01-04 11:23:51', '1', '1', '55000', '100000', '', NULL, 'G2GU89K6LZ9O4PI', 3),
+(12, '2021-01-04 12:39:22', '3', '1', '11500', '20000', '', NULL, 'XF0QIR1KIPIO4K9', 1),
+(13, '2021-01-04 12:39:52', '3', '1', '11500', '20000', '', NULL, 'T6HT23LX9JJG41A', 1),
+(14, '2021-01-04 13:19:53', '3', '1', '21000', '50000', '', NULL, '8TRSARA40TM8GUD', 1),
+(15, '2021-01-04 13:21:15', '3', '1', '21000', '40000', '', NULL, 'IW7S9QUIZJKDOPL', 1),
+(16, '2021-01-04 13:37:35', '1', '1', '6500', '15000', '', NULL, 'ZB1HQPC4ZL21KH5', 3),
+(17, '2021-01-04 13:48:26', '5', '2', '202000', '210000', '', NULL, 'I50YX89ROBD0J0P', 1),
+(18, '2021-01-04 13:52:51', '4', '1', '51000', '60000', '', NULL, '2FW5TFNJYK1A32Y', 1),
+(19, '2021-01-06 00:55:02', '1', '1', '6500', '10000', '', NULL, 'DP62YIO34EBHFHK', 1),
+(20, '2021-01-06 01:19:19', '1', '1', '6500', '10000', '', NULL, 'MFLYU150Q6ILDE8', 4),
+(21, '2021-01-21 14:47:54', '1', '1', '6500', '10000', '', NULL, 'CE592PA8WX5Q4N6', 1),
+(22, '2021-01-23 14:22:09', '1', '1', '6500', '10000', '', NULL, '6FW9T7G1QB6WXY8', 1),
+(23, '2021-01-23 14:24:42', '1', '1', '6500', '10000', '', NULL, 'QJK0TUH51MSQR15', 1);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `kategori_produk`
---
-ALTER TABLE `kategori_produk`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pengguna`
@@ -182,9 +218,15 @@ ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `satuan_produk`
+-- Indexes for table `provider_produk`
 --
-ALTER TABLE `satuan_produk`
+ALTER TABLE `provider_produk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pulsa_produk`
+--
+ALTER TABLE `pulsa_produk`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -204,28 +246,28 @@ ALTER TABLE `transaksi`
 --
 
 --
--- AUTO_INCREMENT for table `kategori_produk`
---
-ALTER TABLE `kategori_produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `satuan_produk`
+-- AUTO_INCREMENT for table `provider_produk`
 --
-ALTER TABLE `satuan_produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `provider_produk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `pulsa_produk`
+--
+ALTER TABLE `pulsa_produk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `toko`
@@ -237,7 +279,7 @@ ALTER TABLE `toko`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
