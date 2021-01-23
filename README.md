@@ -1,38 +1,12 @@
-# Kasir App
-Aplikasi Kasir Penjualan Menggunakan Codeigniter Bootstrap Adminlte
+Sistem Informasi Pulsa (SIPULSA)
+Nama : Dimas Feby Pranata
+NIM : E41200929
+Prodi : PLJ-Teknik Informasika
 
-Aplikasi ini dibuat dengan:
-* **Codeigniter 3**
-* **AdminLTE3**
-* **Bootstrap4**
-* **Mysql Maria DB**
-* **Php 7**
-* dsb
-
-## Fitur
-
-* Login
+## Fitur sipulsa
+* Login (Admin,Pegawai)
 * Dashboard
-* Supplier
-* Pelanggan
-* Produk (Kategori, Satuan, dan Data Produk)
-* Stok (Stok Masuk dan Keluar)
+* Produk (Provider,Pulsa,Produk) (Khusus Admin)
 * Transaksi
-* Laporan (Laporan Penjualan, Stok Masuk, dan Stok Keluar)
-* Pengaturan (Khusus Admin)
-* Pengguna (Khusus Admin)
+* User Management (Khusus Admin)
 
-## Instalasi
-
-* Clone repositori ini
-* Buat database dengan nama **kasir**
-* Import file kasir.sql
-* Taruh project ini di htdocs
-
-## Screenshot
-
-![Dashboard](https://i.ibb.co/3vV25Gv/dashboard.png)
-![Transaksi](https://i.ibb.co/25jpLqL/transaksi.png)
-![Stok](https://i.ibb.co/f4XF8MN/stok.png)
-
-Silahkan gunakan aplikasi ini dengan bijak
