@@ -1,4 +1,4 @@
-SIPULSA
+Sistem Informasi Pulsa (SIPULSA)
 Nama : Dimas Feby Pranata
 NIM : E41200929
 Prodi : PLJ-Teknik Informasika
