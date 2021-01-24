@@ -70,15 +70,6 @@
         </li>
 		
 		
-		<?php if ($role === 'admin'): ?>
-		 <li class="nav-item">
-            <a href="<?php echo site_url('laporan_penjualan') ?>" class="nav-link <?php echo $uri == 'laporan_penjualan' ? 'active' : 'no' ?>">
-              <i class="fas fa-book nav-icon"></i>
-              <p>Laporan</p>
-            </a>
-          </li>
-		  <?php endif ?>
-		  
 		
 				 <?php if ($role === 'admin'): ?>
 			<li class="nav-item">
